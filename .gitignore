@@ -1,5 +1,5 @@
 /target/
-*.sqp
+*.swp
 .classpath
 .project
 /.settings/
