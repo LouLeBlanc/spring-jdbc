@@ -1,9 +1,9 @@
-package edu.brandeis.rseg105.spring_jdbc.dao;
+package edu.brandeis.rseg105.spring.jdbc.dao;
 
 import java.util.List;
 
-import edu.brandeis.rseg105.spring_jdbc.domain.Book;
-import edu.brandeis.rseg105.spring_jdbc.domain.Category;
+import edu.brandeis.rseg105.spring.jdbc.domain.Book;
+import edu.brandeis.rseg105.spring.jdbc.domain.Category;
 
 /**
  * @author Louis LeBlanc

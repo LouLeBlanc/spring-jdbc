@@ -1,4 +1,4 @@
-package edu.brandeis.rseg105.spring_jdbc.crud;
+package edu.brandeis.rseg105.spring.jdbc.crud;
 
 import java.sql.Types;
 

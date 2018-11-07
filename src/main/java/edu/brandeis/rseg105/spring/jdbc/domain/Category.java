@@ -6,7 +6,7 @@
  * Instructed by Vitaly Yurik
  */
 
-package edu.brandeis.rseg105.spring_jdbc.domain;
+package edu.brandeis.rseg105.spring.jdbc.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -171,6 +171,8 @@ public class Category {
 			collectionString.append(">\n");
 			collectionString.append("===================== Books Map Output End =====================");
 
+		} else {
+			collectionString.append("Category -- Id: " + this.id + ", Name: " + this.name);
 		}
 
 		return collectionString.toString();

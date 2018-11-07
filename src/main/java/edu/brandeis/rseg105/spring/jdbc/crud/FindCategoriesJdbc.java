@@ -1,12 +1,13 @@
-package edu.brandeis.rseg105.spring_jdbc.crud;
+package edu.brandeis.rseg105.spring.jdbc.crud;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import edu.brandeis.rseg105.spring_jdbc.domain.Category;
 import org.springframework.jdbc.object.MappingSqlQuery;
+
+import edu.brandeis.rseg105.spring.jdbc.domain.Category;
 
 public class FindCategoriesJdbc extends MappingSqlQuery<Category> {
 	private static final String SQL_SELECT_ALL_CATEGORIES = 

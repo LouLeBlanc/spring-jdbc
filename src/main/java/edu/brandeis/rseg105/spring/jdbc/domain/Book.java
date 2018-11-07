@@ -6,7 +6,7 @@
  * Instructed by Vitaly Yurik
  */
 
-package edu.brandeis.rseg105.spring_jdbc.domain;
+package edu.brandeis.rseg105.spring.jdbc.domain;
 
 import org.springframework.stereotype.Component;
 
@@ -112,7 +112,7 @@ public class Book {
 	 */
 	@Override
 	public String toString() {
-		return "Book - Id: " + this.id + ", ISBN: " + this.isbn + ", Title: " + this.title + ", Price: " + this.price;
+		return "Book - Id: " + this.id + ", Category ID: " + this.category_id + ", ISBN: " + this.isbn + ", Title: " + this.title + ", Price: " + this.price;
 	}
 
 }

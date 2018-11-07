@@ -1,4 +1,4 @@
-package edu.brandeis.rseg105.spring_jdbc.crud;
+package edu.brandeis.rseg105.spring.jdbc.crud;
 
 import java.sql.Types;
 
@@ -18,5 +18,6 @@ public class UpdateBookJdbc extends SqlUpdate {
 		super.declareParameter(new SqlParameter("isbn", Types.VARCHAR));
 		super.declareParameter(new SqlParameter("price", Types.FLOAT));
 		super.declareParameter(new SqlParameter("title", Types.VARCHAR));
+		super.declareParameter(new SqlParameter("id", Types.INTEGER));
 	}
 }

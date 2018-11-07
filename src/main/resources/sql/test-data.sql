@@ -11,4 +11,4 @@ INSERT INTO book (id, category_id, isbn, title, price) VALUES (5, 2, '9780439023
 INSERT INTO book (id, category_id, isbn, title, price) VALUES (6, 2, '9780439023498', 'Catching Fire', 17.99);
 INSERT INTO book (id, category_id, isbn, title, price) VALUES (7, 4, '9780979107269', 'Life of Fred: Cats', 12.99);
 
-INSERT INTO book (id, category_id, isbn, title, price) VALUES (8, 4, '9780979107276', 'Life of Fred: Dogs', 12.99);
+# INSERT INTO book (id, category_id, isbn, title, price) VALUES (8, 4, '9780979107276', 'Life of Fred: Dogs', 12.99);

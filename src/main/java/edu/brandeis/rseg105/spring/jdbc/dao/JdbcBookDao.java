@@ -1,4 +1,4 @@
-package edu.brandeis.rseg105.spring_jdbc.dao;
+package edu.brandeis.rseg105.spring.jdbc.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,14 +11,15 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-import edu.brandeis.rseg105.spring_jdbc.crud.DeleteBookJdbc;
-import edu.brandeis.rseg105.spring_jdbc.crud.FindBooksJdbc;
-import edu.brandeis.rseg105.spring_jdbc.crud.FindCategoriesJdbc;
-import edu.brandeis.rseg105.spring_jdbc.crud.InsertBookJdbc;
-import edu.brandeis.rseg105.spring_jdbc.crud.UpdateBookJdbc;
-import edu.brandeis.rseg105.spring_jdbc.domain.Book;
-import edu.brandeis.rseg105.spring_jdbc.domain.Category;
+import edu.brandeis.rseg105.spring.jdbc.crud.DeleteBookJdbc;
+import edu.brandeis.rseg105.spring.jdbc.crud.FindBooksJdbc;
+import edu.brandeis.rseg105.spring.jdbc.crud.FindCategoriesJdbc;
+import edu.brandeis.rseg105.spring.jdbc.crud.InsertBookJdbc;
+import edu.brandeis.rseg105.spring.jdbc.crud.UpdateBookJdbc;
+import edu.brandeis.rseg105.spring.jdbc.domain.Book;
+import edu.brandeis.rseg105.spring.jdbc.domain.Category;
 
 /**
  * @author Louis LeBlanc
@@ -27,6 +28,7 @@ import edu.brandeis.rseg105.spring_jdbc.domain.Category;
  * Brandeis University
  * Instructed by Vitaly Yurik
  */
+@Repository("bookDao")
 public class JdbcBookDao implements BookDao {
 	private static Logger logger = LoggerFactory.getLogger(JdbcBookDao.class);
 	private DataSource dataSource;
@@ -39,9 +41,10 @@ public class JdbcBookDao implements BookDao {
 	@Override
  	public List<Book> findBooksByCategory(String catName) {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-		String sqlStr = "SELECT category.id, category.name," +
-				"book.id, book.category_id, book.isbn, book.title, book.price," +
-				"FROM category LEFT JOIN book ON category.id = book.category_id";
+		String sqlStr = "SELECT category.id, category.name, book.id, book.category_id, " +
+				"book.isbn, book.title, book.price FROM category " +
+				"LEFT JOIN book ON category.id = book.category_id " +
+				"ORDER BY category.id";
 		List<Book> bookList = new ArrayList<Book>();
 
 		return jdbcTemplate.query(sqlStr, rs -> {
@@ -89,8 +92,9 @@ public class JdbcBookDao implements BookDao {
 	public void deleteBook(Long bookId) {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("id", bookId);
+		logger.info("deleteBook() id = " + bookId);
 		deleteBook.updateByNamedParam(paramMap);
-		logger.info("Deleting book with id: " + bookId);
+		logger.info("Deleted book with id: " + bookId);
 	}
 
 	@Override
