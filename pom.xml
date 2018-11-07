@@ -1,7 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
 	<!-- 
 	Written by Louis LeBlanc
 	For Homework Assignment 1
@@ -10,28 +8,24 @@
 	Instructed by Vitaly Yurik
 	-->
 
-	<groupId>edu.brandeis.rseg105</groupId>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.brandeis.rseg105.spring.jdbc.app</groupId>
 	<artifactId>spring-jdbc</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
+	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-jdbc</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<slf4j.log4j.version>1.7.6</slf4j.log4j.version>
 		<spring.version>5.1.1.RELEASE</spring.version>
+		<slf4j.log4j.version>1.7.6</slf4j.log4j.version>
 		<mysql.client.version>5.1.29</mysql.client.version>
+		<commons.dbcp2.version>2.2.0</commons.dbcp2.version>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.log4j.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -41,6 +35,16 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${commons.dbcp2.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -67,23 +71,128 @@
 				<executions>
 					<execution>
 						<phase>package</phase>
-						<id>spring-jdbc</id>
+						<id>FindAllBooksJdbcApp</id>
 						<goals>
 							<goal>shade</goal>
 						</goals>
 						<configuration>
 							<transformers>
-								<transformer implemetation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
 									<resource>META-INF/spring.handlers</resource>
 								</transformer>
-								<transformer implemetation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
 									<resource>META-INF/spring.schemas</resource>
 								</transformer>
-								<transformer implemetation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>edu.brandeis.rseg105.jdbc-spring.app.App</mainClass>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>edu.brandeis.rseg105.spring.jdbc.app.FindAllBooksJdbcApp</mainClass>
 								</transformer>
 							</transformers>
-							<finalName>spring-jdbc</finalName>
+							<finalName>FindAllBooksJdbcApp</finalName>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>package</phase>
+						<id>FindAllCategoriesJdbcApp</id>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>edu.brandeis.rseg105.spring.jdbc.app.FindAllCategoriesJdbcApp</mainClass>
+								</transformer>
+							</transformers>
+							<finalName>FindAllCategoriesJdbcApp</finalName>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>package</phase>
+						<id>FindBooksByCategoryJdbcApp</id>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>edu.brandeis.rseg105.spring.jdbc.app.FindBooksByCategoryJdbcApp</mainClass>
+								</transformer>
+							</transformers>
+							<finalName>FindBooksByCategoryJdbcApp</finalName>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>package</phase>
+						<id>InsertBookJdbcApp</id>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>edu.brandeis.rseg105.spring.jdbc.app.InsertBookJdbcApp</mainClass>
+								</transformer>
+							</transformers>
+							<finalName>InsertBookJdbcApp</finalName>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>package</phase>
+						<id>UpdateBookJdbcApp</id>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>edu.brandeis.rseg105.spring.jdbc.app.UpdateBookJdbcApp</mainClass>
+								</transformer>
+							</transformers>
+							<finalName>UpdateBookJdbcApp</finalName>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>package</phase>
+						<id>DeleteBookJdbcApp</id>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>edu.brandeis.rseg105.spring.jdbc.app.DeleteBookJdbcApp</mainClass>
+								</transformer>
+							</transformers>
+							<finalName>DeleteBookJdbcApp</finalName>
 						</configuration>
 					</execution>
 				</executions>
@@ -91,3 +200,4 @@
 		</plugins>
 	</build>
 </project>
+
