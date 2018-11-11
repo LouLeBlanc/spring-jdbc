@@ -31,14 +31,14 @@ public class FindBooksByCategoryJdbcApp {
 
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        BookDao bookDao = ctx.getBean("bookDao", JdbcBookDao.class); 
+		BookDao bookDao = ctx.getBean("bookDao", JdbcBookDao.class); 
 
-        List<Book> books = bookDao.findBooksByCategory("Java");
-        logger.info("---------------- Listing Books Start ----------------");
-        books.forEach(book -> { logger.info(book.toString()); });
-        logger.info("----------------- Listing Books End -----------------");
+		List<Book> books = bookDao.findBooksByCategory("Java");
+		logger.info("---------------- Listing Books Start ----------------");
+		books.forEach(book -> { logger.info(book.toString()); });
+		logger.info("----------------- Listing Books End -----------------");
 
-        ctx.close();
+		ctx.close();
 
 		logger.info("================= End of Find All Books By Category =================");
 

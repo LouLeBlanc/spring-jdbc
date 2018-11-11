@@ -27,10 +27,10 @@ public class InsertBookJdbcApp {
 	 */
 	public static void main(String[] args) {
 		// INSERT INTO book (id, category_id, isbn, title, price) VALUES (8, 4, '9780979107276', 'Life of Fred: Dogs', 12.99);
-        logger.info("================ Testing insert new book Start ================");
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		logger.info("================ Testing insert new book Start ================");
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        BookDao bookDao = ctx.getBean("bookDao", JdbcBookDao.class); 
+		BookDao bookDao = ctx.getBean("bookDao", JdbcBookDao.class); 
 
 		// Add a new book to the db
 		Book newBook = new Book();
@@ -40,18 +40,18 @@ public class InsertBookJdbcApp {
 		newBook.setTitle("Life of Fred: Dogs");
 		newBook.setPrice(10.99f);
 
-        bookDao.insertWithCategory(newBook);
+		bookDao.insertWithCategory(newBook);
 
-        List<Book> books = bookDao.findBooks();
-        logger.info("---------------- Listing Books Start ----------------");
-        books.forEach(book -> {
-        	if (book.getId() == newBook.getId())
+		List<Book> books = bookDao.findBooks();
+		logger.info("---------------- Listing Books Start ----------------");
+		books.forEach(book -> {
+			if (book.getId() == newBook.getId())
 				logger.info(book.toString());
-        	});
-        logger.info("----------------- Listing Books End -----------------");
+			});
+		logger.info("----------------- Listing Books End -----------------");
 
-        ctx.close();
+		ctx.close();
 
-        logger.info("================= Testing insert new book End =================");
+		logger.info("================= Testing insert new book End =================");
 	}
 }

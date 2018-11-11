@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS book;
+
 CREATE TABLE  category(
 		id INT NOT NULL,
 		name VARCHAR(100) NOT NULL,

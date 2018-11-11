@@ -25,41 +25,41 @@ public class UpdateBookJdbcApp {
 	 */
 	public static void main(String[] args) {
 
-        logger.info("================ Start of Find All Books ================");
+		logger.info("================ Start of Find All Books ================");
 
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        BookDao bookDao = ctx.getBean("bookDao", BookDao.class); 
+		BookDao bookDao = ctx.getBean("bookDao", BookDao.class); 
 
-        List<Book> books = bookDao.findBooks();
-        Book existingBook = new Book();
+		List<Book> books = bookDao.findBooks();
+		Book existingBook = new Book();
 
-        for (Book book : books) {
-        	if (book.getId() == 8L) {
-        		existingBook.setId(book.getId());
-        		existingBook.setCategory_id(book.getCategory_id());
-        		existingBook.setIsbn(book.getIsbn());
-        		existingBook.setTitle(book.getTitle());
-        		break;
-        	}
-        }
+		for (Book book : books) {
+			if (book.getId() == 8L) {
+				existingBook.setId(book.getId());
+				existingBook.setCategory_id(book.getCategory_id());
+				existingBook.setIsbn(book.getIsbn());
+				existingBook.setTitle(book.getTitle());
+				break;
+			}
+		}
 
-        // Now set the right price: 12.99
-        existingBook.setPrice((float) 12.99);
-        bookDao.updateBook(existingBook);
+		// Now set the right price: 12.99
+		existingBook.setPrice((float) 12.99);
+		bookDao.updateBook(existingBook);
 
-        // Retrieve the books again ...
-        books = bookDao.findBooks();
-        logger.info("---------------- Listing Books Start ----------------");
-        // Display only book with ID 8
-        books.forEach(book -> {
-        	if (book.getId() == 8L) {
-        	logger.info(book.toString());
-        	} });
-        logger.info("----------------- Listing Books End -----------------");
+		// Retrieve the books again ...
+		books = bookDao.findBooks();
+		logger.info("---------------- Listing Books Start ----------------");
+		// Display only book with ID 8
+		books.forEach(book -> {
+			if (book.getId() == 8L) {
+				logger.info(book.toString());
+			} });
+		logger.info("----------------- Listing Books End -----------------");
 
-        ctx.close();
+		ctx.close();
 
-        logger.info("================= End of Find All Books =================");
+		logger.info("================= End of Find All Books =================");
 	}
 }

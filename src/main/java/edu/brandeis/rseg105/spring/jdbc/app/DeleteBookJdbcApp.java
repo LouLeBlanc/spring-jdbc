@@ -26,22 +26,22 @@ public class DeleteBookJdbcApp {
 	 */
 	public static void main(String[] args) {
 
-        logger.info("================ Testing delete book Start ================");
+		logger.info("================ Testing delete book Start ================");
 
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        BookDao bookDao = ctx.getBean("bookDao", BookDao.class); 
+		BookDao bookDao = ctx.getBean("bookDao", BookDao.class); 
 
-        bookDao.deleteBook(8L);
+		bookDao.deleteBook(8L);
 
-        List<Book> books = bookDao.findBooks();
-        logger.info("---------------- Listing Books Start ----------------");
-        books.forEach(book -> { logger.info(book.toString()); });
-        logger.info("----------------- Listing Books End -----------------");
+		List<Book> books = bookDao.findBooks();
+		logger.info("---------------- Listing Books Start ----------------");
+		books.forEach(book -> { logger.info(book.toString()); });
+		logger.info("----------------- Listing Books End -----------------");
 
-        ctx.close();
+		ctx.close();
 
-        logger.info("================= Testing delete book End =================");
+		logger.info("================= Testing delete book End =================");
 	}
 
 }

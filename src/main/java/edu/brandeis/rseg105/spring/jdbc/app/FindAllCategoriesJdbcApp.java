@@ -27,18 +27,18 @@ public class FindAllCategoriesJdbcApp {
 	 */
 	public static void main(String[] args) {
 
-        logger.info("================ Start of Find All Categories ================");
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		logger.info("================ Start of Find All Categories ================");
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        BookDao bookDao = ctx.getBean("bookDao", JdbcBookDao.class); 
+		BookDao bookDao = ctx.getBean("bookDao", JdbcBookDao.class); 
 
-        List<Category> categories = bookDao.findCategories();
-        logger.info("---------------- Listing Categories Start ----------------");
-        categories.forEach(category -> { logger.info(category.toString()); });
-        logger.info("----------------- Listing Categories End -----------------");
+		List<Category> categories = bookDao.findCategories();
+		logger.info("---------------- Listing Categories Start ----------------");
+		categories.forEach(category -> { logger.info(category.toString()); });
+		logger.info("----------------- Listing Categories End -----------------");
 
-        ctx.close();
+		ctx.close();
 
-        logger.info("================= End of Find All Categories =================");
+		logger.info("================= End of Find All Categories =================");
 	}
 }
