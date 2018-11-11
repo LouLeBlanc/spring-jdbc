@@ -1,8 +1,10 @@
-CREATE USER prospring5;
+DROP USER 'prospring5';
+FLUSH PRIVILEGES;
+CREATE USER 'prospring5' IDENTIFIED BY 'prospring5';
 
 CREATE SCHEMA publishing;
 
-GRANT ALL PRIVILEGES ON publishing.* TO 'prospring5'@'localhost' IDENTIFIED BY 'prospring5';
+GRANT ALL PRIVILEGES ON publishing.* TO 'prospring5';
 FLUSH PRIVILEGES;
 
 /* Clarify timezone in case of java.sql.SQLException */
